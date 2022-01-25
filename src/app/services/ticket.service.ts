@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
 import { Seat } from '../models/seat.model';
 import { Ticket } from '../models/ticket.model';
-
+import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,11 +9,16 @@ export class TicketService {
 
   constructor() { }
 
-  getTicketsForShowing(id:number){
-    var filteredArray = this.tickets.filter( obj => obj.showingId === id ).map( obj => obj.id );
-    const tickets = of(filteredArray);
+  getTicketsForShowing(id:number): Observable<Ticket[]>{
+    var filteredArray = this.tickets.filter( obj => obj.showingId == id );
+    const tickets = of(filteredArray)!;
+    return tickets;
   }
   
+  addTicket(ticket:Ticket){
+    this.tickets.push(ticket);
+  }
+
   tickets: Ticket[] = [
     new Ticket(
       1, 1,new Seat(36, 1, 6,6)

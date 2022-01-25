@@ -5,6 +5,7 @@ export class Showing{
         public id:number,
         public movie: Movie,
         public date:Date,
-        public cinemaHall: CinemaHall
+        public cinemaHall: CinemaHall,
+        public isTicketsAvailable: boolean
     ){}
 };

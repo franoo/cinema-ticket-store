@@ -3,6 +3,8 @@ export class Movie{
         public id:number,
         public title:string,
         public description:string,
-        public releaseDate:Date
+        public genre:string,
+        public duration:number,
+        public releaseDate:Date,
     ){}
 }

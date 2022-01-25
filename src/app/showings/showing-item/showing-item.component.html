@@ -1,0 +1,32 @@
+<div class="uk-card uk-card-secondary uk-card-small  uk-width-1-2@l uk-align-center">
+    <div class="uk-card-header">
+        <div class="uk-grid-small uk-flex-middle" uk-grid="parallax: 5">
+            <div class="uk-width-expand">
+                <a (click)="onDetailsShow()">
+                     <h3 class="uk-card-title uk-margin-remove-bottom">{{this.showing.movie.title}}</h3>
+                </a>
+                <p class="uk-text-meta uk-margin-remove-top">{{this.showing.movie.genre}}, {{this.showing.movie.duration}} min</p>
+            </div>
+        </div>
+    </div>
+    <div class="uk-card-body" *ngIf="this.showDetails">
+        <div class="uk-grid-small uk-flex-middle" uk-grid="parallax: 5">
+            <div class="uk-width-expand">
+                <p>Opis: {{this.showing.movie.description}}</p>
+                <p>Data wydania: {{this.showing.movie.releaseDate |  date:'yyyy'}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-card-footer">
+        <div class="uk-grid-small uk-flex-middle" uk-grid="parallax: 5">
+            <p class ="uk-align-left">{{this.showing.date | date:'short' }}, {{this.showing.cinemaHall.name}}</p>
+            <div class ="uk-align-right"*ngIf="this.showing.isTicketsAvailable">
+                <a routerLink="{{this.showing.id}}"class="uk-button uk-button-secondary ">Kup bilet</a>
+            </div>
+            <div class ="uk-align-right"*ngIf="!this.showing.isTicketsAvailable">
+                <a href="#"  class="uk-button uk-button-danger ">Brak biletów</a>
+            </div>
+        </div>
+    </div>
+</div>
