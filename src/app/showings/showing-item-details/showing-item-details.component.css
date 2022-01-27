@@ -1,0 +1,32 @@
+.red{
+    background-color: rgba(165, 42, 42, 0.5);
+}
+.green{
+    background-color: rgba(128, 255, 0, 0.308);
+}
+.inline{
+    display: inline-block;
+}
+.nowrap{
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }

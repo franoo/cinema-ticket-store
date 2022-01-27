@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Showing } from 'src/app/models/showing.model';
 import { Ticket } from 'src/app/models/ticket.model';
+import { TicketRequest } from 'src/app/models/ticketRequest.model';
 import { ShowingService } from 'src/app/services/showing.service';
 import { TicketService } from 'src/app/services/ticket.service';
 
@@ -18,6 +19,7 @@ export class ShowingDetailsComponent implements OnInit {
 
   showing:Showing;
   tickets: Ticket[]=[];
+  ticketsToReserve: TicketRequest[]=[];
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) =>{
       const id = params['id'];

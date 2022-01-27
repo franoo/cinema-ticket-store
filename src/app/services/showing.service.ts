@@ -20,7 +20,7 @@ export class ShowingService {
   
   getShowing(id:number): Observable<Showing>{
     const showing = this.showings.find(x => x.id == id);
-    console.log(showing);
+    //console.log(showing);
     const observableShowing = of(showing!);
     return observableShowing;
   }

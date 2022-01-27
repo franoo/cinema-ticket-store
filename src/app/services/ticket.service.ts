@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Seat } from '../models/seat.model';
 import { Ticket } from '../models/ticket.model';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { TicketRequest } from '../models/ticketRequest.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +20,9 @@ export class TicketService {
     this.tickets.push(ticket);
   }
 
+  ticketToReserveSubject= new BehaviorSubject<TicketRequest[]>(null as any);
+  ticketToReserveData= this.ticketToReserveSubject.asObservable();
+  
   tickets: Ticket[] = [
     new Ticket(
       1, 1,new Seat(36, 1, 6,6)

@@ -11,6 +11,8 @@ import { ShowingItemComponent } from './showings/showing-item/showing-item.compo
 import { HttpClientModule } from '@angular/common/http';
 import { ShowingDetailsComponent } from './showings/showing-details/showing-details.component';
 import { TicketPurchaseComponent } from './ticket-purchase/ticket-purchase.component';
+import { SceneComponent } from './showings/scene/scene.component';
+import { ShowingItemDetailsComponent } from './showings/showing-item-details/showing-item-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { TicketPurchaseComponent } from './ticket-purchase/ticket-purchase.compo
     ShowingListComponent,
     ShowingItemComponent,
     ShowingDetailsComponent,
-    TicketPurchaseComponent
+    TicketPurchaseComponent,
+    SceneComponent,
+    ShowingItemDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
-<div *ngIf="this.showing">
-    <app-showing-item [showing]=this.showing></app-showing-item>
+<div class="overflow"*ngIf="this.showing">
+    <app-showing-item-details [showing]=this.showing></app-showing-item-details>
+    <app-scene></app-scene>
     <app-ticket-purchase [showing]=this.showing [tickets]=this.tickets></app-ticket-purchase>
 </div>

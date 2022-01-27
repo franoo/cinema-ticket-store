@@ -1,0 +1,32 @@
+<div class="uk-card uk-card-secondary uk-card-small  uk-width-1-2@l uk-align-center">
+    <div class="uk-card-header">
+        <div class="uk-grid-small uk-flex-middle" uk-grid="parallax: 5">
+            <div class="uk-width-expand">
+                <h1 class="uk-card-title uk-margin-remove-bottom">{{this.showing.movie.title}}</h1>
+                <p class="uk-text-meta uk-margin-remove-top">{{this.showing.movie.genre}}, {{this.showing.movie.duration}} min</p>
+            </div>
+        </div>
+    </div>
+    <div class="uk-card-body">
+        <div class="uk-grid-small uk-child-width-1-1" uk-grid="parallax: 5">
+            <h3 class ="uk-align-left uk-width-expand">{{this.showing.date | date:'short' }}, {{this.showing.cinemaHall.name}}</h3>
+            <div class="uk-flex-middle" uk-grid>
+                <div *ngIf="this.ticketsToReserve ==null || this.ticketsToReserve.length == 0; else other_content">
+                    <h5 class="red">Nie wybrano miejsc.</h5>
+                </div>
+                <ng-template #other_content class="nowrap" >
+                    <h5>
+                        <ul>
+                            <li class="green inline">
+                                Wybrane miejsca:	 &nbsp;
+                            </li>
+                            <li class="inline"*ngFor="let ticket of this.ticketsToReserve">
+                                rząd:{{ticket.rowId}}, miejsce:{{ticket.columnId}};  &nbsp;
+                            </li>
+                        </ul>
+                    </h5>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
