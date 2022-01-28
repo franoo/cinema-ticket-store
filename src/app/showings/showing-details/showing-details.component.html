@@ -1,5 +1,28 @@
 <div class="overflow"*ngIf="this.showing">
-    <app-showing-item-details [showing]=this.showing></app-showing-item-details>
-    <app-scene></app-scene>
-    <app-ticket-purchase [showing]=this.showing [tickets]=this.tickets></app-ticket-purchase>
+    <div class="uk-align-center"*ngIf="!this.seatsChosen; else confirmation">
+        <h3 class="uk-text-center">Wybierz miejsca na film: {{this.showing.movie.title}}</h3>
+        <app-scene></app-scene>
+        <app-ticket-purchase [showing]=this.showing [tickets]=this.tickets></app-ticket-purchase>
+
+    <div class="uk-align-center uk-flex uk-flex-wrap uk-width-1-2@l ">
+        <div class=" uk-width-1-2@s uk-flex-last@m"*ngIf="!this.seatsSelected; else available">
+            <button class="button-68 grey uk-width-1-1">Dalej</button>
+        </div>
+        <ng-template #available>
+            <button class="button-68 green uk-width-1-2@s uk-flex-last@m" (click)=confirmSeats()>Dalej</button>
+        </ng-template>
+        <button class="button-68 red uk-width-1-2@s " (click)=returnToMain()>Anuluj</button>
+    </div>
 </div>
+</div>
+<ng-template class=""#confirmation >
+    <app-showing-item-details [showing]=this.showing></app-showing-item-details>
+    <div class="uk-align-center uk-flex uk-flex-wrap uk-width-1-2@l" *ngIf="!this.finishPurchase; else finished">
+        <button class="button-68 green uk-width-1-2@s uk-flex-last@m" (click)=reserveSeats()>Potwierdź zakup</button>
+        <button class="button-68 red uk-width-1-2@s uk-flex-first" (click)=returnToMain()>Anuluj</button>
+    </div>
+    <ng-template class="" #finished uk-grid>
+        <h3 class="uk-text-center">Zakupiono bilety.</h3>
+        <button class="uk-button-large uk-button-secondary uk-align-center" (click)=returnToMain()>Powrót do strony głównej</button>
+    </ng-template>
+</ng-template>

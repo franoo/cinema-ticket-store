@@ -33,7 +33,7 @@ export class TicketPurchaseComponent implements OnInit {
 
   private updateSeatsWithTickets(){
     this.tickets.forEach(element => {
-      this.seats[this.showing.cinemaHall.rows * element.seat.rowId + element.seat.columnId]=1;
+      this.seats[this.showing.cinemaHall.rows * element.rowId + element.columnId]=1;
     });
     //console.log(this.seats[10*this.showing.cinemaHall.columns + 11]);
   }
@@ -49,6 +49,7 @@ export class TicketPurchaseComponent implements OnInit {
     this.seats[i*this.showing.cinemaHall.columns + j]=0;
     var index = this.reservedSeats.findIndex(x => x.rowId == i && x.columnId == j);
     this.reservedSeats.splice(index, 1);
+    this.ticketService.ticketToReserveSubject.next(this.reservedSeats);
   }
   reserveSeat(i:number,j:number){
    this.seats[i*this.showing.cinemaHall.columns + j]=2;

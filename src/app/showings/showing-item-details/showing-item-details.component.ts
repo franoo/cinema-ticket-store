@@ -26,4 +26,5 @@ export class ShowingItemDetailsComponent implements OnInit {
   onDetailsShow(){
     this.showDetails=!this.showDetails;
   }
+  
 }

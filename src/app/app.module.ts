@@ -13,6 +13,7 @@ import { ShowingDetailsComponent } from './showings/showing-details/showing-deta
 import { TicketPurchaseComponent } from './ticket-purchase/ticket-purchase.component';
 import { SceneComponent } from './showings/scene/scene.component';
 import { ShowingItemDetailsComponent } from './showings/showing-item-details/showing-item-details.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ShowingItemDetailsComponent } from './showings/showing-item-details/sho
     TicketPurchaseComponent,
     SceneComponent,
     ShowingItemDetailsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

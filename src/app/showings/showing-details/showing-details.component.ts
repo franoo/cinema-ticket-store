@@ -20,6 +20,12 @@ export class ShowingDetailsComponent implements OnInit {
   showing:Showing;
   tickets: Ticket[]=[];
   ticketsToReserve: TicketRequest[]=[];
+  seatsSelected=false;//select on map
+  seatsChosen=false;//choose and proceed
+  finishPurchase=false;
+
+  ticketReservationMessage='';
+
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) =>{
       const id = params['id'];
@@ -29,8 +35,32 @@ export class ShowingDetailsComponent implements OnInit {
       this.ticketService.getTicketsForShowing(id).subscribe((data :Ticket[])=>{
         this.tickets=data;
         console.log(this.tickets);
+      });
+      this.ticketService.ticketToReserveData.subscribe(data=>{
+        this.ticketsToReserve = data;
+        console.log(this.ticketsToReserve);
+        if(this.ticketsToReserve == null || this.ticketsToReserve.length==0){
+          this.seatsSelected=false;
+        }
+        else{
+          this.seatsSelected=true;
+        }
     });
+    });
+    this.ticketService.reservedTicketData.subscribe(data=>{
+      //this.finishPurchase=true;
+      console.log(this.finishPurchase);
     });
   }
 
+  confirmSeats(){
+    this.seatsChosen=true;
+  }
+  returnToMain(){
+    this.router.navigateByUrl('/showings');
+  }
+  reserveSeats(){
+    this.ticketService.reserveTickets(this.ticketsToReserve);
+    this.finishPurchase=true;
+  }
 }

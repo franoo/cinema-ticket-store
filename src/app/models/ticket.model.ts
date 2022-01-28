@@ -4,6 +4,7 @@ export class Ticket{
     constructor(
         public id:number,
         public showingId:number,
-        public seat: Seat
+        public rowId:number,
+        public columnId:number
     ){}
 }

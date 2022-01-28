@@ -10,6 +10,12 @@ export class TicketService {
 
   constructor() { }
 
+  ticketToReserveSubject= new BehaviorSubject<TicketRequest[]>(null as any);
+  ticketToReserveData= this.ticketToReserveSubject.asObservable();
+
+  reservedTicketSubject= new BehaviorSubject<string>(null as any);
+  reservedTicketData= this.reservedTicketSubject.asObservable();
+
   getTicketsForShowing(id:number): Observable<Ticket[]>{
     var filteredArray = this.tickets.filter( obj => obj.showingId == id );
     const tickets = of(filteredArray)!;
@@ -20,21 +26,28 @@ export class TicketService {
     this.tickets.push(ticket);
   }
 
-  ticketToReserveSubject= new BehaviorSubject<TicketRequest[]>(null as any);
-  ticketToReserveData= this.ticketToReserveSubject.asObservable();
+  reserveTickets(ticket:TicketRequest[]){
+    //console.log("helo");
+    for (var i=0; i<ticket.length;i++){
+      var lastTicket = this.tickets[this.tickets.length-1];
+      this.tickets.push(new Ticket(lastTicket.id+1,ticket[i].showingId,ticket[i].rowId, ticket[i].columnId));
+    }
+    this.reservedTicketSubject.next("Pomyślnie zarezerwowano bilety");
+  }
+
   
   tickets: Ticket[] = [
     new Ticket(
-      1, 1,new Seat(36, 1, 6,6)
+      1, 1, 6,6
     ),
     new Ticket(
-      2, 1,new Seat(37, 1, 6,7)
+      2, 1,6,7
     ),
     new Ticket(
-      3, 1,new Seat(16, 1, 4,4)
-    ),  
+      3, 1,4,4
+    ), 
     new Ticket(
-      4, 2,new Seat(16, 1, 4,4)
+      4, 2, 4,4
     ),       
   ];
 }

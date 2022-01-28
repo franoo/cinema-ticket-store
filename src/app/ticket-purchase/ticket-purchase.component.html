@@ -1,6 +1,5 @@
 <div *ngIf="this.seats"class="">
     <div class=" uk-flex uk-flex-center "*ngFor="let row of [].constructor(this.showing.cinemaHall.rows); let i = index">
-
         <div class="grid-container grid-container--fit "*ngFor="let column of [].constructor(this.showing.cinemaHall.columns); let j = index">
                 <button *ngIf="this.getValueFromIndex(i,j)==0" (click)="reserveSeat(i,j)" class="green grid-element ">{{j}}
                 </button>
